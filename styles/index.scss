@@ -1,0 +1,188 @@
+*
+{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+:root
+{
+    font-size: 18px;
+}
+
+body
+{
+    font-family: 'Kumbh Sans', sans-serif;
+    color: hsl(0, 11%, 12%);
+}
+
+.main
+{
+    background-color: hsl(185, 75%, 39%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    .card
+    {
+        // height determined by the elements inside the card div
+        width: 350px;
+        border-radius: 20px;
+        background: white;
+        // Without this property the back-ground image does not maintain the border radius of 
+        // the parent element / container 
+        // The CSS overflow property controls what happens to content that is too big to fit into an area.
+        // The overflow property has the following values:
+        // visible - Default. The overflow is not clipped. The content renders outside the element's box
+        // hidden - The overflow is clipped, and the rest of the content will be invisible
+        // scroll - The overflow is clipped, and a scrollbar is added to see the rest of the content
+        // auto - Similar to scroll, but it adds scrollbars only when necessary
+        overflow: hidden;
+        // If it is just text we don't need to use:
+        // display: flex;
+        // justify-content: center;
+        // allign-items: center;
+        text-align: center;
+        // An element with position: relative; is positioned relative to its normal position.
+        // Setting the top, right, bottom, and left properties of a relatively-positioned element 
+        // will cause it to be adjusted away from its normal position. Other content will not be 
+        // adjusted to fit into any gap left by the element.
+        position: relative;
+        .card-header
+        {
+            background-image: url(/images/bg-pattern-card.svg);
+            // The background-size CSS property sets the size of the element's background image. 
+            // The image can be left to its natural size, stretched, or constrained to fit the available space.
+            //cover
+            // Scales the image (while preserving its ratio) to the smallest possible size to fill the container 
+            // (that is: both its height and width completely cover the container), leaving no empty space. 
+            // If the proportions of the background differ from the element, the image is cropped either vertically or 
+            // horizontally.
+            background-size: cover;
+            height: 150px;
+        }
+        .card-body
+        {
+            // the padding property has three values:
+            // padding: 0px 20px 30px;
+            // top padding is 0px
+            // right and left paddings are 20px
+            // bottom padding is 30px
+
+            // Used to create the white spacing around the name-and-age and the city
+            padding: 0px 20px 25px;
+            .name-and-age
+            {
+                font-size: 1rem;
+                margin-bottom: 12px;
+                .age
+                {
+                    margin-left: 6px;
+                }
+            }
+            .city
+            {
+                font-size: .9rem;
+            }
+        }
+        .card-footer
+        {
+            border-top: 1px solid hsl(0, 3%, 86%);
+            display: flex;
+            // If the padding property has two values:
+            // padding: 0px 25px;
+            // top and bottom paddings are 0px
+            // right and left paddings are 25px
+            padding: 0px 25px;
+            .profile-stat
+            {
+                // flex: 1 means the following:
+                // flex-grow : 1;    ➜ The div will grow in same proportion as the window-size       
+                // flex-shrink : 1;  ➜ The div will shrink in same proportion as the window-size 
+                // flex-basis : 0;   ➜ The div does not have a starting value as such and will 
+                //                      take up screen as per the screen size available for
+                //                      e.g:- if 3 divs are in the wrapper then each div will take 33%.
+                flex: 1;
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .data
+                {
+                    font-size: 1rem;
+                    margin-bottom: 6px;
+                }
+                .meta
+                {
+                    font-size: .6rem;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+}
+
+.image-container
+{
+    border: 5px white solid;
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
+    // You can set the margin property to auto to horizontally center the element within its container.
+
+    // The element will then take up the specified width, and the remaining space will 
+    // be split equally between the left and right margins.
+    // (Height / 2) + 5 to move it half-way up adding 5 because of border radius
+    margin: -55px auto 30px auto;
+    overflow: hidden;
+    .profile-pic
+    {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
+.age, .city, .meta
+{
+    font-weight: 400;
+    color: hsl(0, 0%, 59%);
+}
+
+.circles
+{
+    .c1
+    {
+        animation: 2s circles forwards;
+        position: absolute;
+        top: -600px;
+        left: -600px;
+        transform: translate(-200px, -100px);
+        opacity: 0;
+    }
+    .c2
+    {
+        animation: 2s circles forwards;
+        position: absolute;
+        bottom: -600px;
+        right: -600px;
+        transform: translate(200px, 100px);
+        opacity: 0;
+    }
+}
+
+@keyframes circles
+{
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
